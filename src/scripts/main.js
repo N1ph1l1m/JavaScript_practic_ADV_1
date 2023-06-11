@@ -8,17 +8,17 @@
  */
 
 
-// let i = 0;
-// const eventTarget = (e) => {
-//   // console.log(e.target);
-//   i++;
-//   if (i == 1) {
-//     btn.removeEventListener("click", eventTarget);
-//   }
-// };
+let i = 0;
+const eventTarget = (e) => {
+  // console.log(e.target);
+  i++;
+  if (i == 1) {
+    btn.removeEventListener("click", eventTarget);
+  }
+};
 
 //Кнопки
-/*
+
 const btn = document.querySelector("button"),
 btn1 = document.getElementById("btn1");
 
@@ -30,20 +30,20 @@ link.addEventListener("click", function (event) {
   event.preventDefault(); //отменят стандартное событие
   //console.log(event.target );// создали новое событие для тега "а"
 });
-*/
+
 //Удаляет кнопку
- /* 
+
 btn.addEventListener('click',(e) =>{
     e.target.remove(); 
 })
-*/
+
 
  //Показывает информацию об элементе при наведении
-/*
+
 btn1.addEventListener('mouseenter',(e) =>{
    console.log(e);
 })
-*/
+
 
 
 //XMLHttpRequest
