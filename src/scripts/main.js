@@ -56,7 +56,7 @@ inputRub.addEventListener("input", () => {
 
   //request.open(method,url,async,login,pass);
 
-  request.open("GET", "../scripts/curent.json");
+  request.open("GET", "/src/scripts/curent1.json");
   request.setRequestHeader("Content-type", "application/json; charset=utf-8");
   request.send();
 
@@ -80,4 +80,3 @@ inputRub.addEventListener("input", () => {
     }
   });
 });
-
