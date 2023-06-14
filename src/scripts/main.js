@@ -96,6 +96,7 @@ inputRub.addEventListener("input", () => {
 // },2000);
 console.log("Request data");
 //Если код внутри константы req, будет исправен то сработает функция reject, если нет то сработает функция reject
+/*
 const req = new Promise(function (resolve, reject) {
   setTimeout(() => {
     console.log("Render data....");
@@ -116,6 +117,7 @@ req.then((product) => {
     console.log(product);
   }, 2000);
 });
+
 
 const reqPersone = new Promise(function (resolve, reject) {
   setTimeout(() => {
@@ -192,4 +194,20 @@ reqPersone.then((persone)=> {
     
   });
   
-  
+  */
+const test = time => {
+  return new Promise (resolve =>{
+    setTimeout(()=> resolve(),time);
+  });
+};
+// test(1000).then(()=> console.log('1000 ms '));
+// test(2000).then(()=> console.log('2000 ms '));
+
+// Promise.all([test(1000), test(2000)]).then(() => {
+//   console.log('all');
+// });
+
+
+Promise.rece([test(1000), test(2000)]).then(() => {
+  console.log('all');
+});
