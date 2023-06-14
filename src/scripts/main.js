@@ -1,12 +1,11 @@
 "use strict";
 
-//Простой обработчик событий 
+//Простой обработчик событий
 /*
  btn.onclick = function(){
     alert("TEST button");
 }
  */
-
 
 let i = 0;
 const eventTarget = (e) => {
@@ -20,7 +19,7 @@ const eventTarget = (e) => {
 //Кнопки
 
 const btn = document.querySelector("button"),
-btn1 = document.getElementById("btn1");
+  btn1 = document.getElementById("btn1");
 
 btn.addEventListener("click", eventTarget);
 
@@ -33,18 +32,15 @@ link.addEventListener("click", function (event) {
 
 //Удаляет кнопку
 
-btn.addEventListener('click',(e) =>{
-    e.target.remove(); 
-})
+btn.addEventListener("click", (e) => {
+  e.target.remove();
+});
 
+//Показывает информацию об элементе при наведении
 
- //Показывает информацию об элементе при наведении
-
-btn1.addEventListener('mouseenter',(e) =>{
-   console.log(e);
-})
-
-
+btn1.addEventListener("mouseenter", (e) => {
+  console.log(e);
+});
 
 //XMLHttpRequest
 
@@ -82,7 +78,7 @@ inputRub.addEventListener("input", () => {
 });
 
 //Promise
-//Простой пример 
+//Простой пример
 // console.log("Request data");
 
 // setTimeout(()=>{
@@ -100,26 +96,57 @@ inputRub.addEventListener("input", () => {
 // },2000);
 console.log("Request data");
 //Если код внутри константы req, будет исправен то сработает функция reject, если нет то сработает функция reject
-const req = new Promise(function(resolve,reject){
+const req = new Promise(function (resolve, reject) {
+  setTimeout(() => {
+    console.log("Render data....");
 
-    setTimeout(()=>{
-      console.log("Render data....");
+    const product = {
+      name: "TV",
+      price: 2000,
+    };
 
-      const product ={
-        name:'TV',
-        price:2000
-      };
-
-      resolve(product);
-    },2000);
+    resolve(product);
+  }, 2000);
 });
 
-req.then((product)=>{
+req.then((product) => {
   console.log("Data received");
-  setTimeout(() =>{
-    product.status = 'order';
+  setTimeout(() => {
+    product.status = "order";
     console.log(product);
-  },2000);
+  }, 2000);
 });
 
+const reqPepsone = new Promise(function (resolve, reject) {
+  setTimeout(() => {
+    console.log("Render data....");
+
+    const persone = {
+      firstName: "Michael",
+      lastName: "Gvin",
+    };
+
+    resolve(persone);
+  }, 2000);
+});
+
+reqPepsone.then((persone)=> {
+  const req2 = new Promise((resolve,reject) =>{
+    setTimeout(()=>{
+      persone.age = 22;
+      console.log('Update data - add age');
+      resolve(persone);
+    },2000);
+  });
+  req2.then(repsone=>{
+    console.log('......');
+    setTimeout(() => {
+      persone.gender = "Male"
+      console.log('Update data - add gender');
+      console.log(persone);
+    },3000);
+
+    
+  });
+});
 
