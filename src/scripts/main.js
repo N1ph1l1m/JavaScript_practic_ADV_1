@@ -130,6 +130,35 @@ const reqPersone = new Promise(function (resolve, reject) {
   }, 2000);
 });
 
+// Код с resolve
+// reqPersone.then((persone)=> {
+//   return  new Promise((resolve,reject) =>{
+//     setTimeout(()=>{
+//       persone.age = 22;
+//       console.log('Update data - add age');
+//       // resolve(persone);
+//       reject();
+//     },2000);
+//   });
+
+// }).then(persone=>{
+//   console.log('......');
+//   setTimeout(() => {
+//     persone.gender = "Male";
+//     console.log('Update data - add gender');
+//   },1000);
+//   return persone;
+// }).then(persone =>{
+
+//   setTimeout(()=>{
+//     console.log("...");
+//     persone.famileStatus = "free";
+//   console.log('Update data - add family status');
+//   console.log(persone);
+//   },4000);
+// });
+
+//Код с reject
 reqPersone.then((persone)=> {
   return  new Promise((resolve,reject) =>{
     setTimeout(()=>{
@@ -153,6 +182,14 @@ reqPersone.then((persone)=> {
     persone.famileStatus = "free";
   console.log('Update data - add family status');
   console.log(persone);
-  },4000);
-});
-
+  },2000);
+}).catch(()=>{
+  console.log('error');
+  }).finally(()=>{
+    setTimeout(()=>{
+      console.log("Prograg close ...");
+    },3000);
+    
+  });
+  
+  
