@@ -80,3 +80,46 @@ inputRub.addEventListener("input", () => {
     }
   });
 });
+
+//Promise
+//Простой пример 
+// console.log("Request data");
+
+// setTimeout(()=>{
+//   console.log("Render data....");
+
+//   const product ={
+//     name:'TV',
+//     price:2000
+//   };
+
+//   setTimeout(() =>{
+//     product.status = 'order';
+//     console.log(product);
+//   },2000);
+// },2000);
+console.log("Request data");
+//Если код внутри константы req, будет исправен то сработает функция reject, если нет то сработает функция reject
+const req = new Promise(function(resolve,reject){
+
+    setTimeout(()=>{
+      console.log("Render data....");
+
+      const product ={
+        name:'TV',
+        price:2000
+      };
+
+      resolve(product);
+    },2000);
+});
+
+req.then((product)=>{
+  console.log("Data received");
+  setTimeout(() =>{
+    product.status = 'order';
+    console.log(product);
+  },2000);
+});
+
+
