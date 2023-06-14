@@ -117,7 +117,7 @@ req.then((product) => {
   }, 2000);
 });
 
-const reqPepsone = new Promise(function (resolve, reject) {
+const reqPersone = new Promise(function (resolve, reject) {
   setTimeout(() => {
     console.log("Render data....");
 
@@ -130,23 +130,29 @@ const reqPepsone = new Promise(function (resolve, reject) {
   }, 2000);
 });
 
-reqPepsone.then((persone)=> {
-  const req2 = new Promise((resolve,reject) =>{
+reqPersone.then((persone)=> {
+  return  new Promise((resolve,reject) =>{
     setTimeout(()=>{
       persone.age = 22;
       console.log('Update data - add age');
       resolve(persone);
     },2000);
   });
-  req2.then(repsone=>{
-    console.log('......');
-    setTimeout(() => {
-      persone.gender = "Male"
-      console.log('Update data - add gender');
-      console.log(persone);
-    },3000);
 
-    
-  });
+}).then(persone=>{
+  console.log('......');
+  setTimeout(() => {
+    persone.gender = "Male";
+    console.log('Update data - add gender');
+  },1000);
+  return persone;
+}).then(persone =>{
+
+  setTimeout(()=>{
+    console.log("...");
+    persone.famileStatus = "free";
+  console.log('Update data - add family status');
+  console.log(persone);
+  },4000);
 });
 
