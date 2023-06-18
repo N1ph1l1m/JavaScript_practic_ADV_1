@@ -50,9 +50,9 @@ const inputRub = document.querySelector("#rub"),
 inputRub.addEventListener("input", () => {
   const request = new XMLHttpRequest();
 
-  //request.open(method,url,async,login,pass);
+  // request.open(method,url,async,login,pass);
 
-  request.open("GET", "/src/scripts/curent1.json");
+  request.open("GET", "src/server/curent1.json");
   request.setRequestHeader("Content-type", "application/json; charset=utf-8");
   request.send();
 
