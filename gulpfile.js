@@ -11,6 +11,7 @@ const imagemin = require("gulp-imagemin");
 const htmlmin = require("gulp-htmlmin");
 const size = require("gulp-size");
 const newer = require("gulp-newer");
+const gulpJson = require('gulp-json');
 const browserSync = require("browser-sync").create();
 const del = require("del");
 
@@ -45,10 +46,10 @@ const paths = {
     src: "src/img/*",
     dest: "dist/img",
   },
-  // html: {
-  //   src: "src/json/*.json",
-  //   dest: "dist",
-  // },
+   server: {
+    src: "src/server/api.json",
+    dest: "dist/server",
+  },
 };
 
 function clean(){
@@ -176,6 +177,13 @@ function img() {
       .pipe(gulp.dest(paths.images.dest))
   );
 }
+function server(){
+  return gulp.src(paths.server.src)
+  .pipe(gulpJson())
+  .pipe(gulp.dest('server'))
+  //.pipe(browserSync.stream());  
+}
+
 //Отслеживание функции function styles()
 function watch() {
   browserSync.init({
@@ -189,13 +197,15 @@ function watch() {
   gulp.watch(paths.styles.src, styles);
   gulp.watch(paths.scripts.src, scripts);
   gulp.watch(paths.images.src, img);
+
 }
 //Запуск gulp по умолчанию 
-const build = gulp.series(clean,html,otherHTMLfiles,gulp.parallel(otherHTMLfiles,stylesNull,styles,stylesMain, scripts,img ),watch);
+const build = gulp.series(clean,html,otherHTMLfiles,gulp.parallel(otherHTMLfiles,stylesNull,styles,stylesMain, scripts,img,server),watch);
 
 //Вызов функции
 exports.clean = clean; 
 exports.html = html; 
+exports.gulpJson = server;
 exports.otherHTMLfiles = otherHTMLfiles; 
 exports.stylesNull = stylesNull;
 exports.stylesMain = stylesMain;
