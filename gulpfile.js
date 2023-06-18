@@ -50,6 +50,10 @@ const paths = {
     src: "src/server/api.json",
     dest: "dist/server",
   },
+  jsonSync: {
+    src: "src/server/*.json",
+    dest: "dist/server",
+  },
 };
 
 function clean(){
@@ -183,6 +187,10 @@ function server(){
   .pipe(gulp.dest('server'))
   //.pipe(browserSync.stream());  
 }
+function jsonSync(){
+  return gulp.src(paths.jsonSync.src)
+  .pipe(browserSync.stream())
+}
 
 //Отслеживание функции function styles()
 function watch() {
@@ -197,6 +205,7 @@ function watch() {
   gulp.watch(paths.styles.src, styles);
   gulp.watch(paths.scripts.src, scripts);
   gulp.watch(paths.images.src, img);
+  gulp.watch(paths.jsonSync.src, jsonSync);
 
 }
 //Запуск gulp по умолчанию 
