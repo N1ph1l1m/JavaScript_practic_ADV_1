@@ -45,6 +45,10 @@ const paths = {
     src: "src/img/*",
     dest: "dist/img",
   },
+  // html: {
+  //   src: "src/json/*.json",
+  //   dest: "dist",
+  // },
 };
 
 function clean(){
@@ -175,10 +179,10 @@ function img() {
 //Отслеживание функции function styles()
 function watch() {
   browserSync.init({
-    server: "./src/"
+    server: "./dist/"
 });
-  gulp.watch(paths.html.src).on('change' , browserSync.reload);
-  gulp.watch(paths.html.src);
+  gulp.watch(paths.html.dest).on('change' , browserSync.reload);
+  gulp.watch(paths.html.src,html);
   gulp.watch(paths.otherHTMLfiles.src,otherHTMLfiles);
   gulp.watch(paths.stylesNull.src, stylesNull);
   gulp.watch(paths.stylesMain.src, stylesMain);
