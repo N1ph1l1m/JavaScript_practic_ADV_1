@@ -1,4 +1,4 @@
-"use strict";
+
 
 //Простой обработчик событий
 
@@ -42,40 +42,30 @@ btn1.addEventListener("mouseenter", (e) => {
   console.log(e);
 });
 
-//XMLHttpRequest
+//XMLHttpRequest - в gulp с browser sync не работает
+// const inputRub = document.querySelector("#rub"),
+//   inputUSDT = document.querySelector("#usdt"),
+//   links = 'src/scripts/curent1.json';
 
-const inputRub = document.querySelector("#rub"),
-  inputUSDT = document.querySelector("#usdt");
+// inputRub.addEventListener("input", () => {
+//   const request = new XMLHttpRequest();
 
-inputRub.addEventListener("input", () => {
-  const request = new XMLHttpRequest();
+//   //request.open(method,url,async,login,pass);
 
-  //request.open(method,url,async,login,pass);
+//   request.open('GET', links);
+//   request.setRequestHeader("Content-type", "application/json; charset=utf-8");
+//   request.send();
 
-  request.open("GET", "/src/scripts/curent1.json");
-  request.setRequestHeader("Content-type", "application/json; charset=utf-8");
-  request.send();
-
-    request.addEventListener('readystatechange',()=>{
-      if(request.readyState === 4 && request.status === 200){
-        console.log(request.response);
-        const data = JSON.parse(request.response);
-        inputUSDT.value = (+inputRub.value / data.curent.usdt).toFixed(2);
-
-      }else{
-          inputUSDT.value = "Что-то не так"
-      }
-    });
-  
-  request.addEventListener("load", () => {
-    if (request.status === 200) {
-      const data = JSON.parse(request.response);
-      inputUSDT.value = (+inputRub.value / data.curent.usdt).toFixed(2);
-    } else {
-      inputUSDT.value = "Что-то не так";
-    }
-  });
-});
+//     request.addEventListener('load',()=>{
+//       if(request.status === 200){
+//         console.log(request.response);
+//         const data = JSON.parse(request.response);
+//         inputUSDT.value = (+inputRub.value / data.curent.usdt).toFixed(2);
+//       }else{
+//           inputUSDT.value = "Что-то не так";
+//       }
+//     });
+// });
 
 //Promise
 //Простой пример
@@ -213,8 +203,3 @@ reqPersone.then((persone)=> {
 // Promise.rece([test(1000), test(2000)]).then(() => {
 //   console.log('all');
 // });
-
-
-fetch('https://jsonplaceholder.typicode.com/posts')
-      .then(response => response.json())
-      .then(json => console.log(json))
