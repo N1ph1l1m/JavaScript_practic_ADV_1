@@ -1,4 +1,4 @@
-
+  
 
 //Простой обработчик событий
 
@@ -203,3 +203,16 @@ reqPersone.then((persone)=> {
 // Promise.rece([test(1000), test(2000)]).then(() => {
 //   console.log('all');
 // });
+// fetch('https://jsonplaceholder.typicode.com/users/1')
+//       .then(response => response.json())
+//       .then(json => console.log(json));
+
+      fetch('https://jsonplaceholder.typicode.com/posts',{
+        method:'POST',
+        body:JSON.stringify({name:'Alex'}),
+        headers:{
+          'Content-type':'application/json'
+        }
+      })
+      .then(response => response.json())
+      .then(json => console.log(json));
