@@ -216,3 +216,13 @@ reqPersone.then((persone)=> {
       })
       .then(response => response.json())
       .then(json => console.log(json));
+
+      //Локальное хранилище
+      /*
+      localStorage.setItem('number',5);
+      console.log(localStorage.setItem('num2',500));
+      //удаление localStorage.removeItem('number2',);
+
+      console.log(localStorage.getItem('number'));
+
+      */
