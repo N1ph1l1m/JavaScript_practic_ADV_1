@@ -1,33 +1,24 @@
 "use strict";
 
-// у нас есть массив с именем и фамилией
-// let arr = ["Ilya", "Kantor"];
-
-// деструктурирующее присваивание
-// записывает firstName = arr[0]
-// и surname = arr[1]
-// let [firstName, surname] = arr;
-
-// alert(firstName); // Ilya
-// alert(surname);  // Kantor
-
-
-// // второй элемент не нужен
-// let [firstName, , title,,age] = ["Julius", "Caesar", "Consul", "of the Roman Republic" , 220];
-// console.log(firstName);
-// console.log(title);
-// console.log(age);
-
-
-function calcValues(a,b){
-    return[
-        a+b,
-        a-b,
-        a*b,
-        a/b,
-    ]
+let Name = 'Nick',
+Age  = 22,
+Gender = 'male',
+Status  =  'student'
+//структуризация обьекта
+let user={
+    userName : Name,
+    userAge : Age,
+    userGender : Gender,
+    userStatus  :  Status,
 };
+// деструктуризация обьекта 
+let {userAge, userStatus } = user;
 
-const [sum,sub,,del] = calcValues(10,3);
-console.log(sum,sub,del);
-//console.log(calcVelues(10,7));
+console.log('userAge = \t' + userAge + '\n User status : \t' + userStatus );
+
+
+function createParamForm (placeHolder = "Input text...." , type = "text", btnText = 'Apply'){
+    const fomr = document.createElement('form');
+    const input = document.createElement('input');
+    const btn = document.createElement('button');
+}
